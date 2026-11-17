@@ -1,0 +1,125 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 42,
+  "spacing": 6,
+  "reload_style_on_change": true,
+
+  "modules-left": [
+    "custom/launcher",
+    "sway/workspaces",
+    "mpd",
+  ],
+  "modules-center": [
+    "clock",
+  ],
+  "modules-right": [
+    "sway/language",
+    "backlight",
+    "network",
+    "pulseaudio",
+    "battery",
+    "tray",
+  ],
+
+  "custom/launcher": {
+    "format": "Void Linux",
+    "tooltip": false,
+    "on-click": "wofi --show drun"
+  },
+
+  "sway/workspaces": {
+    "format": "{name}",
+    "disable-scroll": true,
+    "all-outputs": true,
+    "sort-by-number": true
+  },
+
+  "sway/window": {
+    "format": "󰖯  {}",
+    "max-length": 45
+  },
+
+  "sway/language": {
+    "format": "󰌌  {}",
+    "min-length": 5,
+    "tooltip": true
+  },
+
+  "clock": {
+    "format": "󰥔  {:%a %d %b  ·  %H:%M}",
+    "tooltip-format": "<big>{:%A, %d %B %Y}</big>\n<tt>{calendar}</tt>"
+  },
+
+  "cpu": {
+    "interval": 5,
+    "format": "󰻠  {usage}%",
+    "tooltip": false
+  },
+
+  "memory": {
+    "interval": 5,
+    "format": "󰍛  {percentage}%",
+    "tooltip": false
+  },
+
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰝟  muted",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "on-click": "pavucontrol",
+    "on-click-right": "pamixer -t",
+    "scroll-step": 5
+  },
+
+  "network": {
+    "format-wifi": "󰖩  {signalStrength}%",
+    "format-ethernet": "󰈀  connected",
+    "format-disconnected": "󰖪  offline",
+    "tooltip-format": "{ifname}: {ipaddr}",
+    "on-click": "nm-connection-editor"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 10
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": "󰂄  {capacity}%",
+    "format-icons": [
+      "󰁺", "󰁻", "󰁼", "󰁽", "󰁾",
+      "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
+    ]
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+
+  "mpd": {
+    "format": "{stateIcon}  {title}",
+    "format-paused": "󰏤  {title}",
+    "format-stopped": "󰓛  Stopped",
+    "format-disconnected": "󰝛  MPD offline",
+    "state-icons": {
+      "playing": "󰐊",
+      "paused": "󰏤"
+    },
+    "max-length": 20,
+    "tooltip-format": "{album} · {elapsedTime:%M:%S}/{totalTime:%M:%S}",
+    "on-click": "mpc toggle",
+    "on-click-right": "mpc next",
+    "on-click-middle": "mpc prev"
+  },
+
+  "backlight": {
+    "format": "{icon}  {percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "scroll-step": 5,
+    "tooltip": false
+  },
+}
