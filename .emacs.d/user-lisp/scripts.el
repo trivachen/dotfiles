@@ -48,6 +48,8 @@
    (variable-pitch-mode -1))
  'org-mode-hook)
 
+(global-set-key (kbd "C-x C-a") 'org-agenda-list)
+
 ;; Faces
 
 (defun user/setup-faces ()
@@ -61,15 +63,7 @@
    '(org-level-2 ((t :height 1.2)))
    '(org-code ((t :font "Iosevka Nerd Font" :inherit 'default)))
    '(org-block-begin-line ((t :background "background")))
-   '(org-block-end-line ((t :background "background"))))
-  ; (when
-  ;     (not (display-graphic-p))
-  ;   (custom-set-faces
-  ;    '(default ((t :background "unspecified-bg")))
-  ;    '(flymake-note ((t (:underline (:color foreground-color :style wave :position nil)))))
-  ;    '(flymake-warning ((t (:underline (:color foreground-color :style line :position nil)))))
-  ;    '(flymake-error ((t (:underline (:color foreground-color :style line :position nil)))))))
-     )
+   '(org-block-end-line ((t :background "background")))))
 
 (add-elements-to-list
  default-frame-alist
@@ -93,6 +87,15 @@
     (dired-do-kill-lines))
 
   (define-key dired-mode-map (kbd "C-c f") 'dired-filter))
+
+;; Typst
+
+(defun typst-preview ()
+  "Reload typst buffer in the browser."
+  (async-shell-command
+   (concat "tinymist preview " (buffer-file-name (current-buffer))) nil nil))
+
+(add-hook 'typst-ts-mode-hook 'typst-preview)
 
 ;; Tramp
 
